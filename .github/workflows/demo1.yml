@@ -3,7 +3,24 @@ on:
   pull_request:
     types:
       - opened
-  workflow_dispatch: 
+    branches: 
+      - master
+      - "dev-*"      #allows any charaters other than /  (dev-allow, dev-1)
+      - "feature/**"  #allows "/" aswell (feature/new, feature/add/barnch)
+    
+  workflow_dispatch:
+
+  push:
+    branches: 
+      - master
+      - "dev-*"      #allows any charaters other than /  (dev-allow, dev-1)
+      - "feature/**"  #allows "/" aswell (feature/new, feature/add/barnch)
+    paths-ignore:
+      - ".github/workflows/*"
+
+
+
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
